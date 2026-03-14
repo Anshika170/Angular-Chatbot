@@ -1,0 +1,25 @@
+<div class="paint-container">
+  <button class="back-btn" routerLink="">🏠</button>
+  <h1>Paint Game</h1>
+  <div class="tools">
+    <div class="color-palette">
+      <div class="color-swatch" [style.background-color]="'#000000'" (click)="changeColor('#000000')" [class.selected]="selectedColor === '#000000'"></div>
+      <div class="color-swatch" [style.background-color]="'#FF0000'" (click)="changeColor('#FF0000')" [class.selected]="selectedColor === '#FF0000'"></div>
+      <div class="color-swatch" [style.background-color]="'#00FF00'" (click)="changeColor('#00FF00')" [class.selected]="selectedColor === '#00FF00'"></div>
+      <div class="color-swatch" [style.background-color]="'#0000FF'" (click)="changeColor('#0000FF')" [class.selected]="selectedColor === '#0000FF'"></div>
+      <div class="color-swatch" [style.background-color]="'#FFFF00'" (click)="changeColor('#FFFF00')" [class.selected]="selectedColor === '#FFFF00'"></div>
+      <div class="color-swatch" [style.background-color]="'#FF00FF'" (click)="changeColor('#FF00FF')" [class.selected]="selectedColor === '#FF00FF'"></div>
+      <div class="color-swatch" [style.background-color]="'#00FFFF'" (click)="changeColor('#00FFFF')" [class.selected]="selectedColor === '#00FFFF'"></div>
+      <div class="color-swatch" [style.background-color]="'#FFA500'" (click)="changeColor('#FFA500')" [class.selected]="selectedColor === '#FFA500'"></div>
+      <div class="color-swatch" [style.background-color]="'#800080'" (click)="changeColor('#800080')" [class.selected]="selectedColor === '#800080'"></div>
+      <div class="color-swatch" [style.background-color]="'#FFC0CB'" (click)="changeColor('#FFC0CB')" [class.selected]="selectedColor === '#FFC0CB'"></div>
+    </div>
+    <button class="clear-btn" (click)="clearCanvas()">🗑️ Clear</button>
+  </div>
+  <canvas #canvas width="800" height="600"
+          (mousedown)="startDrawing($event)"
+          (mousemove)="draw($event)"
+          (mouseup)="stopDrawing()"
+          (mouseout)="stopDrawing()">
+  </canvas>
+</div>

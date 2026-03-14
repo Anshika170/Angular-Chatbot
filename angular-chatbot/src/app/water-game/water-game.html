@@ -1,0 +1,35 @@
+<div class="water-container">
+  <button class="back-btn" routerLink="">🏠</button>
+  <h1>Water Pouring Puzzle</h1>
+  <p class="description">{{ description }}</p>
+  <div class="glasses">
+    <div class="glass" [class.selected]="selectedGlass === 0" (click)="selectGlass(0)">
+      <div class="water" [style.height.%]="(glasses[0] / capacities[0]) * 100"></div>
+      <div class="bubbles" *ngIf="glasses[0] > 0">
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+      </div>
+      <span class="level">{{ glasses[0] }}/{{ capacities[0] }}</span>
+    </div>
+    <div class="glass" [class.selected]="selectedGlass === 1" (click)="selectGlass(1)">
+      <div class="water" [style.height.%]="(glasses[1] / capacities[1]) * 100"></div>
+      <div class="bubbles" *ngIf="glasses[1] > 0">
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+      </div>
+      <span class="level">{{ glasses[1] }}/{{ capacities[1] }}</span>
+    </div>
+    <div class="glass" [class.selected]="selectedGlass === 2" (click)="selectGlass(2)">
+      <div class="water" [style.height.%]="(glasses[2] / capacities[2]) * 100"></div>
+      <div class="bubbles" *ngIf="glasses[2] > 0">
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+      </div>
+      <span class="level">{{ glasses[2] }}/{{ capacities[2] }}</span>
+    </div>
+  </div>
+  <button class="reset-btn" (click)="reset()">New Puzzle</button>
+</div>
