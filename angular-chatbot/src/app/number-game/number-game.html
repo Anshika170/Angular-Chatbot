@@ -1,0 +1,24 @@
+<div class="chat-container">
+  <button routerLink="">Back to Home</button>
+  <h1>Number Guessing Chatbot Game</h1>
+  <div class="messages">
+    <div *ngFor="let msg of messages" [class]="msg.sender">
+      <strong>{{ msg.sender === 'user' ? 'You' : 'Bot' }}:</strong> {{ msg.text }}
+    </div>
+  </div>
+
+  
+  <div *ngIf="!userSecret" class="input-section">
+    <label for="secret">Enter your secret number (1-100):</label>
+    <input type="number" id="secret" min="1" max="100" #secretInput>
+    <button (click)="setUserSecret(secretInput.valueAsNumber)">Set Secret Number</button>
+  </div>
+  <div *ngIf="userSecret && !gameOver" class="input-section">
+    <input type="text" #msgInput placeholder="Enter your guess or response" [disabled]="waitingForResponse && currentTurn !== 'user' || currentTurn === 'bot' && !waitingForResponse">
+    <button (click)="sendMessage(msgInput.value); msgInput.value=''" [disabled]="waitingForResponse && currentTurn !== 'user' || currentTurn === 'bot' && !waitingForResponse">Send</button>
+  </div>
+  <div *ngIf="gameOver" class="game-over">
+    <p>Game over! Winner: {{ winner === 'user' ? 'You' : 'Bot' }}</p>
+    <button (click)="resetGame()">Play Again</button>
+  </div>
+</div>
